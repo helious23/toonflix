@@ -3,8 +3,11 @@ import 'package:toonflix/models/webtoon_episode_model.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Episode extends StatelessWidget {
-  const Episode({Key? key, required this.episode, required this.webtoonId})
-      : super(key: key);
+  const Episode({
+    Key? key,
+    required this.episode,
+    required this.webtoonId,
+  }) : super(key: key);
 
   final String webtoonId;
   final WebtoonEpisodeModel episode;
@@ -34,16 +37,31 @@ class Episode extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                episode.title,
-                style: TextStyle(
-                  color: Colors.green.shade400,
-                  fontSize: 16,
-                ),
+              Image.network(
+                episode.thumb,
+                width: 120,
               ),
-              Icon(
-                Icons.chevron_right_sharp,
-                color: Colors.green.shade400,
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      width: 100,
+                      child: Text(
+                        episode.title,
+                        style: TextStyle(
+                          color: Colors.green.shade400,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    Icon(
+                      Icons.chevron_right_sharp,
+                      color: Colors.green.shade400,
+                    )
+                  ],
+                ),
               )
             ],
           ),
